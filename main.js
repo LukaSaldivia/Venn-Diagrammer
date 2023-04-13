@@ -32,10 +32,10 @@ class Conjunto{
             e = e.toString();
             let total = this.elements.length;
             // let fontSize = 12;
-            let fontSize = this.size*(1/(total+2))/(e.length)*3;
+            let fontSize = this.size*(1/(total+2))/(e.length)*3+5;
 
-            ctx.font = `${fontSize}px Georgia`;
-            const textWidth = ctx.measureText(e).width;
+            ctx.font = `${fontSize}px Arial`;
+            let textWidth = ctx.measureText(e).width;
             const angle = (Math.PI * 2) / total;
             ctx.fillStyle="black";
             const fontMetrics = ctx.measureText(e).fontBoundingBoxAscent;
@@ -52,12 +52,7 @@ class Conjunto{
 }
 
 let conjuntos_ingresados = [
-    ['a'],
-    [...4],
-    [1,3,4,5,6,8],
-    [7,8,9,10],
-    [9,10,11,12,13,15,17,18,'c'],
-    [-3,-5]
+    'luka'.split(''),'melany'.split(''),'gerardo'.split(''),'alicia'.split('')
 ]
 
 function encontrarIntersecciones(conjuntos) {
@@ -88,11 +83,17 @@ function encontrarIntersecciones(conjuntos) {
 
 function dibujarConjuntos(intersecciones,unicos,ctx,canvas) {
     unicos.forEach((e,i)=>{
-        let c = new Conjunto(canvas.width/7*(i+1),canvas.height/9*(i+1)+30,canvas.width/13,e);
+        let c = new Conjunto(canvas.width/(unicos.length+1)*(i+1),canvas.height/9*(i+1)+30,canvas.width/13,e);
         c.draw(ctx);
     })
+
+    intersecciones.forEach((e,i)=>{
+        let c = new Conjunto(canvas.width/12*(i+1),canvas.height/12*(i+1)+150,20,e);
+        c.draw(ctx);
+    })
+    
 }
 
-dibujarConjuntos(undefined,encontrarIntersecciones(conjuntos_ingresados)[1],ctx,c);
+dibujarConjuntos(encontrarIntersecciones(conjuntos_ingresados)[0],encontrarIntersecciones(conjuntos_ingresados)[1],ctx,c);
 
 
