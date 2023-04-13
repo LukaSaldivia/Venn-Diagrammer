@@ -7,8 +7,10 @@ let sizes = {
     h:window.innerWidth
 }
 
-c.width = sizes.w/1.5;
-c.height = sizes.h/2.5;
+
+
+c.width = sizes.w/2;
+c.height = sizes.h/3;
 
 ctx.fillStyle = "white";
 
@@ -88,7 +90,7 @@ function dibujarConjuntos(intersecciones,unicos,ctx,canvas) {
     })
 
     intersecciones.forEach((e,i)=>{
-        let c = new Conjunto(canvas.width/12*(i+1),canvas.height/12*(i+1)+150,20,e);
+        let c = new Conjunto(canvas.width/7*(i+1),canvas.height/12*(i+1)+190,canvas.width/23,e);
         c.draw(ctx);
     })
     
